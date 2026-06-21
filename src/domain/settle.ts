@@ -1,5 +1,5 @@
 import type { Address, Expense } from './types';
-import { splitAmount } from './balances';
+import { splitAmount } from './balances.js';
 
 export interface Transfer {
   from: Address;
