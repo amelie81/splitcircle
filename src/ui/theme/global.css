@@ -12,7 +12,10 @@ body,
 }
 
 body {
-  background: var(--paper);
+  background:
+    radial-gradient(1200px 600px at 50% -10%, var(--violet-soft), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--ink);
   font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   font-feature-settings: 'tnum' 1, 'cv05' 1;
@@ -63,10 +66,25 @@ button {
 }
 .masthead h1 {
   font-size: 1.75rem;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .masthead .sub {
   color: var(--muted);
   font-size: 0.875rem;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-mark {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  filter: drop-shadow(0 4px 10px rgba(108, 71, 214, 0.35));
 }
 
 /* --- card ---------------------------------------------------------------- */
@@ -75,7 +93,7 @@ button {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 18px;
+  padding: 20px;
 }
 .card.sunk {
   background: var(--paper-2);
@@ -84,28 +102,35 @@ button {
 
 /* --- buttons ------------------------------------------------------------- */
 .btn {
-  border: 1px solid transparent;
-  border-radius: 11px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
   padding: 11px 16px;
   min-height: 44px;
   font-weight: 600;
   background: var(--paper-2);
   color: var(--ink);
-  transition: background 0.12s ease, transform 0.04s ease;
+  transition: transform 0.06s ease, box-shadow 0.16s ease, filter 0.16s ease;
 }
 .btn:active {
   transform: translateY(1px);
 }
 .btn.primary {
-  background: var(--indigo);
+  border-color: transparent;
+  background: var(--grad);
+  background-size: 140% 140%;
   color: #fff;
+  box-shadow: var(--shadow-lift);
 }
 .btn.primary:hover {
-  background: var(--indigo-700);
+  filter: brightness(1.05);
+  background-position: 100% 0;
 }
 .btn.ghost {
   background: transparent;
   border-color: var(--line);
+}
+.btn.ghost:hover {
+  background: var(--violet-soft);
 }
 .btn:disabled {
   opacity: 0.5;
@@ -240,16 +265,19 @@ button {
 .field input,
 .field select {
   font: inherit;
-  padding: 11px 12px;
-  min-height: 44px;
+  padding: 12px 13px;
+  min-height: 46px;
   border: 1px solid var(--line);
-  border-radius: 10px;
+  border-radius: 12px;
   background: var(--paper);
   color: var(--ink);
+  transition: border-color 0.14s ease, box-shadow 0.14s ease;
 }
-.field input:focus {
+.field input:focus,
+.field select:focus {
   border-color: var(--focus);
   outline: none;
+  box-shadow: var(--glow);
 }
 
 .checks {

@@ -51,10 +51,29 @@ export function App() {
 function Masthead() {
   return (
     <div className="masthead">
-      <div>
-        <h1>SplitCircle</h1>
-        <span className="sub">Shared expenses, settled in CRC</span>
+      <div className="brand">
+        <BrandMark />
+        <div>
+          <h1>SplitCircle</h1>
+          <span className="sub">Shared expenses, settled in CRC</span>
+        </div>
       </div>
     </div>
+  );
+}
+
+function BrandMark() {
+  return (
+    <svg className="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+      <defs>
+        <linearGradient id="sc-brand" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#7c5cff" />
+          <stop offset="55%" stopColor="#6c47d6" />
+          <stop offset="100%" stopColor="#9d4edd" />
+        </linearGradient>
+      </defs>
+      <circle cx="15" cy="20" r="11" fill="url(#sc-brand)" opacity="0.55" />
+      <circle cx="25" cy="20" r="11" fill="none" stroke="url(#sc-brand)" strokeWidth="2.5" />
+    </svg>
   );
 }

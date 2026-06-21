@@ -47,6 +47,10 @@ export function AddExpense({
       setError('Enter a valid amount, e.g. 12.50.');
       return;
     }
+    if (amountMicro <= 0n) {
+      setError('Amount must be greater than zero.');
+      return;
+    }
     const shares = group.members
       .filter((m) => included.has(m.address.toLowerCase()))
       .map((m) => ({ member: m.address, weight: 1 }));

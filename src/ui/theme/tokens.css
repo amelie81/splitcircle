@@ -1,32 +1,43 @@
 :root {
-  --ink: #1b1a2e; /* near-black indigo, text */
-  --paper: #f7f4ee; /* warm surface */
-  --paper-2: #efeae0; /* sunk panels, rows */
-  --indigo: #3b3a7a; /* brand anchor */
-  --indigo-700: #2a2960; /* hover/active */
-  --owe: #b4452f; /* you owe (muted brick, not alarm red) */
-  --owed: #2f6d57; /* you're owed */
-  --settled: #2f8f5b; /* confirmed payment ONLY */
-  --line: #d9d2c5; /* hairlines, 1px */
-  --muted: #6b6678; /* secondary text */
-  --focus: #6f6cc4; /* visible keyboard focus ring */
-  --radius: 14px; /* friendly, not pill, not sharp */
-  --shadow: 0 1px 0 #fff inset, 0 2px 8px rgba(27, 26, 46, 0.06);
+  --ink: #1a1730; /* near-black violet-ink, text */
+  --paper: #ffffff; /* card / surface */
+  --paper-2: #f4f1fb; /* sunk panels, rows (violet-tinted) */
+  --bg: #f6f4fc; /* app backdrop */
+  --indigo: #6c47d6; /* Circles violet — brand anchor (button bg, accents) */
+  --indigo-700: #5733bf; /* hover/active */
+  --violet-soft: #ede7fb; /* tint fills, chips */
+  --grad: linear-gradient(135deg, #7c5cff 0%, #6c47d6 55%, #9d4edd 100%);
+  --owe: #c4453a; /* you owe (muted brick, not alarm red) */
+  --owed: #2f8f6b; /* you're owed */
+  --settled: #1faa6b; /* confirmed payment ONLY */
+  --line: #e7e2f3; /* hairlines, 1px */
+  --muted: #6f6a85; /* secondary text */
+  --focus: #7c5cff; /* visible keyboard focus ring */
+  --radius: 16px; /* friendly, modern */
+  --radius-lg: 22px; /* hero / large cards */
+  --shadow: 0 1px 2px rgba(26, 23, 48, 0.04), 0 8px 24px rgba(108, 71, 214, 0.07);
+  --shadow-lift: 0 10px 30px rgba(108, 71, 214, 0.18);
+  --glow: 0 0 0 4px rgba(124, 92, 255, 0.18);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #ece9f5;
-    --paper: #16151f;
-    --paper-2: #1e1d2b;
-    --indigo: #9b99e6;
-    --indigo-700: #b7b5f0;
-    --line: #2c2a3a;
-    --muted: #9a96ab;
-    --owe: #e0795f;
-    --owed: #6fc59b;
-    --settled: #74d6a0;
-    --focus: #9b99e6;
-    --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 2px 10px rgba(0, 0, 0, 0.4);
+    --ink: #ece9f7;
+    --paper: #1c1930; /* card */
+    --paper-2: #24213a; /* sunk panels */
+    --bg: #131124; /* app backdrop */
+    --indigo: #9b81f0;
+    --indigo-700: #b3a0f5;
+    --violet-soft: #2c2750;
+    --grad: linear-gradient(135deg, #8a6bff 0%, #7c5cff 55%, #b15de0 100%);
+    --line: #322d4d;
+    --muted: #9a95b4;
+    --owe: #e8867a;
+    --owed: #6fd6a8;
+    --settled: #6fe0a8;
+    --focus: #9b81f0;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px rgba(0, 0, 0, 0.45);
+    --shadow-lift: 0 12px 34px rgba(0, 0, 0, 0.55);
+    --glow: 0 0 0 4px rgba(155, 129, 240, 0.22);
   }
 }
