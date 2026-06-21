@@ -1,0 +1,459 @@
+@import './tokens.css';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-feature-settings: 'tnum' 1, 'cv05' 1;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- masthead ------------------------------------------------------------ */
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding-top: 8px;
+}
+.masthead h1 {
+  font-size: 1.75rem;
+}
+.masthead .sub {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* --- card ---------------------------------------------------------------- */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.card.sunk {
+  background: var(--paper-2);
+  box-shadow: none;
+}
+
+/* --- buttons ------------------------------------------------------------- */
+.btn {
+  border: 1px solid transparent;
+  border-radius: 11px;
+  padding: 11px 16px;
+  min-height: 44px;
+  font-weight: 600;
+  background: var(--paper-2);
+  color: var(--ink);
+  transition: background 0.12s ease, transform 0.04s ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn.primary {
+  background: var(--indigo);
+  color: #fff;
+}
+.btn.primary:hover {
+  background: var(--indigo-700);
+}
+.btn.ghost {
+  background: transparent;
+  border-color: var(--line);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn.block {
+  width: 100%;
+}
+
+/* --- amounts ------------------------------------------------------------- */
+.amount {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.amount.big {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+.amount.owe {
+  color: var(--owe);
+}
+.amount.owed {
+  color: var(--owed);
+}
+.amount.settled {
+  color: var(--settled);
+}
+
+/* --- balance card -------------------------------------------------------- */
+.balance-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start;
+}
+.balance-card .label {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.balance-card .square {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.75rem;
+}
+
+/* --- member chip --------------------------------------------------------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.chip .ava {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+.chip .ava img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- rows ---------------------------------------------------------------- */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.row:last-child {
+  border-bottom: none;
+}
+.row .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.row .meta .title {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.row .meta .sub {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.plan-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.plan-row:last-child {
+  border-bottom: none;
+}
+.plan-row .desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.plan-row .note {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+/* --- forms --------------------------------------------------------------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.field label {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+.field input,
+.field select {
+  font: inherit;
+  padding: 11px 12px;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+}
+.field input:focus {
+  border-color: var(--focus);
+  outline: none;
+}
+
+.checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.checks label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+.checks input {
+  accent-color: var(--indigo);
+}
+
+/* --- misc ---------------------------------------------------------------- */
+.muted {
+  color: var(--muted);
+}
+.error {
+  color: var(--owe);
+  font-size: 0.875rem;
+}
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 24px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.section-title {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.spread {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.pill {
+  font-size: 0.75rem;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+/* visually hidden, still announced by screen readers */
+.sr-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- settlement flow animation ------------------------------------------- */
+.settle-flow {
+  margin: 8px 0 2px;
+  max-width: 260px;
+}
+.flow-track {
+  stroke: var(--line);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.flow-track.done {
+  stroke: var(--settled);
+}
+.flow-node {
+  fill: var(--paper);
+  stroke: var(--indigo);
+  stroke-width: 2;
+}
+.flow-node.arrived {
+  fill: var(--settled);
+  stroke: var(--settled);
+}
+.flow-dot {
+  fill: var(--indigo);
+}
+.flow-ends {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* --- settlement graph (signature element) -------------------------------- */
+.graph {
+  margin: 4px 0 10px;
+}
+.ring-closed {
+  stroke: var(--settled);
+  stroke-width: 2;
+  stroke-dasharray: 3 7;
+  stroke-linecap: round;
+  opacity: 0.7;
+}
+.gross-arc {
+  stroke: var(--owe);
+  stroke-width: 1.25;
+  opacity: 0.42;
+  transition: opacity 0.5s ease;
+}
+.graph.collapsed .gross-arc {
+  opacity: 0;
+}
+.plan-arc {
+  stroke: var(--indigo);
+  stroke-width: 2;
+  opacity: 0;
+  transition: opacity 0.6s ease, stroke-width 0.6s ease;
+}
+.graph.collapsed .plan-arc {
+  opacity: 0.95;
+  stroke-width: 4;
+}
+.plan-arc.settled {
+  stroke: var(--settled);
+}
+.arrow-head {
+  fill: var(--indigo);
+}
+.arrow-head.settled {
+  fill: var(--settled);
+}
+.arc-label {
+  fill: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  paint-order: stroke;
+  stroke: var(--paper);
+  stroke-width: 3px;
+}
+.arc-label.settled {
+  fill: var(--settled);
+}
+.node-dot {
+  fill: var(--indigo);
+}
+.node-mono {
+  fill: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.node-name {
+  fill: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* --- motion -------------------------------------------------------------- */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.app > .card,
+.app > .masthead {
+  animation: rise 0.32s ease both;
+}
+.plan-row,
+.row {
+  animation: rise 0.26s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .flow-dot {
+    display: none;
+  }
+}

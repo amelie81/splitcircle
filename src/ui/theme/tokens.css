@@ -1,0 +1,32 @@
+:root {
+  --ink: #1b1a2e; /* near-black indigo, text */
+  --paper: #f7f4ee; /* warm surface */
+  --paper-2: #efeae0; /* sunk panels, rows */
+  --indigo: #3b3a7a; /* brand anchor */
+  --indigo-700: #2a2960; /* hover/active */
+  --owe: #b4452f; /* you owe (muted brick, not alarm red) */
+  --owed: #2f6d57; /* you're owed */
+  --settled: #2f8f5b; /* confirmed payment ONLY */
+  --line: #d9d2c5; /* hairlines, 1px */
+  --muted: #6b6678; /* secondary text */
+  --focus: #6f6cc4; /* visible keyboard focus ring */
+  --radius: 14px; /* friendly, not pill, not sharp */
+  --shadow: 0 1px 0 #fff inset, 0 2px 8px rgba(27, 26, 46, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #ece9f5;
+    --paper: #16151f;
+    --paper-2: #1e1d2b;
+    --indigo: #9b99e6;
+    --indigo-700: #b7b5f0;
+    --line: #2c2a3a;
+    --muted: #9a96ab;
+    --owe: #e0795f;
+    --owed: #6fc59b;
+    --settled: #74d6a0;
+    --focus: #9b99e6;
+    --shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+}
