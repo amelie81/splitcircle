@@ -43,11 +43,15 @@ npm run server              # backend on :8787
 npm run dev                 # frontend on :5190
 ```
 
-Then open the Circles host playground pointed at the dev server:
+Then open the Circles Mini App Playground and point it at your app:
 
 ```
-https://circles-dev.gnosis.io/playground?url=http://localhost:5190
+https://circles.gnosis.io/playground
 ```
+
+The playground is served over HTTPS, so it can only embed an HTTPS app URL — a
+plain `http://localhost` dev server is blocked as mixed content. Serve the dev
+server over HTTPS (or deploy it) and give the playground that URL.
 
 Opened directly (outside the host) the app shows an "open inside Circles" notice —
 that is expected, because the wallet only connects through the host.
@@ -82,7 +86,29 @@ A two-minute walk-through for judges, inside the Circles host:
   in the transfer `data`. The encoder is isolated and unit tested.
 - `server/` — backend store, HMAC intents, and the indexer matcher that is the
   trust boundary: a debt is only marked paid when a matching on-chain transfer is
-  found, never on the frontend's say-so.
+  found, never on the frontend's say-so. `server/app.ts` builds the Hono app;
+  `server/index.ts` serves it locally and `api/index.ts` runs it as a Vercel
+  function so the same code powers both.
+- `server/store.ts` — swappable persistence: a JSON file locally, Upstash Redis
+  (Vercel KV) when its REST credentials are present, behind one async interface.
+
+## Deploy
+
+The whole app runs on Vercel as one origin — the Vite frontend plus the backend
+as a serverless function under `/api`, so the client calls it same-origin (no
+CORS, no mixed content in the playground).
+
+Required environment variables on the deployment:
+
+| Variable | Purpose |
+|---|---|
+| `SPLITCIRCLE_HMAC_KEY` | 32-byte hex; signs settlement and invite intents. |
+| `KV_REST_API_URL` / `KV_REST_API_TOKEN` | Upstash Redis (Vercel KV) — persists groups. |
+| `CIRCLES_RPC_URL` | Circles indexer RPC (defaults to the public node). |
+| `PATHFINDER_RPC_URL` | Pathfinder RPC (defaults to the public node). |
+
+Then point the [Circles Playground](https://circles.gnosis.io/playground) at the
+deployed HTTPS URL.
 
 ## License
 

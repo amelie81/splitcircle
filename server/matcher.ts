@@ -35,7 +35,7 @@ async function doMatch(
   groupId: string,
   settlementId: string,
 ): Promise<MatchResult> {
-  const group = store.getGroup(groupId);
+  const group = await store.getGroup(groupId);
   const settlement = group?.settlements.find((s) => s.id === settlementId);
   if (!settlement) return { status: 'pending' };
   if (settlement.status === 'confirmed') {
